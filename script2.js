@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedCell) {
             selectedCell.classList.remove('selected');
         }
-selectedCell = cell;
+        
+        selectedCell = cell;
         cell.classList.add('selected');
         
         // Highlight same numbers
@@ -64,7 +65,8 @@ selectedCell = cell;
         if (difficulty === 'easy') cellsToRemove = 40;
         else if (difficulty === 'medium') cellsToRemove = 50;
         else cellsToRemove = 60;
-removeNumbers(gameBoard, cellsToRemove);
+        
+        removeNumbers(gameBoard, cellsToRemove);
         
         // Display the puzzle
         displayBoard();
@@ -98,7 +100,8 @@ removeNumbers(gameBoard, cellsToRemove);
         }
         return true;
     }
- // Remove numbers from the board to create a puzzle
+
+    // Remove numbers from the board to create a puzzle
     function removeNumbers(board, count) {
         let removed = 0;
         while (removed < count) {
@@ -133,6 +136,7 @@ removeNumbers(gameBoard, cellsToRemove);
             }
         }
     }
+
     // Check if the current board is valid
     function checkSolution() {
         // Check if the board is complete
@@ -162,6 +166,7 @@ removeNumbers(gameBoard, cellsToRemove);
         messageDisplay.style.color = '#2ecc71';
         clearInterval(timerInterval);
     }
+
     // Solve the puzzle automatically
     function solvePuzzle() {
         gameBoard = JSON.parse(JSON.stringify(solution));
@@ -191,7 +196,8 @@ removeNumbers(gameBoard, cellsToRemove);
         for (let x = 0; x < 9; x++) {
             if (board[x][col] === num) return false;
         }
-  // Check 3x3 box
+        
+        // Check 3x3 box
         const boxRow = Math.floor(row / 3) * 3;
         const boxCol = Math.floor(col / 3) * 3;
         for (let x = 0; x < 3; x++) {
@@ -223,7 +229,8 @@ removeNumbers(gameBoard, cellsToRemove);
         if (e.key >= '1' && e.key <= '9') {
             gameBoard[row][col] = parseInt(e.key);
             selectedCell.textContent = e.key;
-               // Check if the number is correct
+            
+            // Check if the number is correct
             if (gameBoard[row][col] !== solution[row][col]) {
                 selectedCell.classList.add('error');
             } else {
