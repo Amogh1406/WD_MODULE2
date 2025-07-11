@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Changer</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 100px;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .red { background-color: rgb(248, 49, 9); color: black; }
+    .yellow { background-color: #f3e521; color: black; }
+    .blue { background-color: #116fe1; }
+  </style>
+</head>
+<body>
+
+  <h1>Tap a Button to Change Background Color</h1>
+
+  <button class="red" onclick="changeColor('rgb(248, 49, 9)')">Red</button>
+  <button class="yellow" onclick="changeColor('#f3e521')">Yellow</button>
+  <button class="blue" onclick="changeColor('#116fe1')">Blue</button>
+
+  <script>
+    function changeColor(color) {
+      document.body.style.backgroundColor = color;
+    }
+  </script>
+
+</body>
+</html>

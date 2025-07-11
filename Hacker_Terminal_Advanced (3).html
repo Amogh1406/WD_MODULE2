@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hacker Terminal - Advanced</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      padding: 20px;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      overflow-y: auto;
+      height: 100%;
+    }
+    .blink {
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      from, to { color: transparent; }
+      50% { color: #00FF00; }
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    body {
+      animation: flicker 0.1s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <audio id="typeSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_cae13eb6ac.mp3?filename=keyboard-typing-1-181964.mp3" preload="auto"></audio>
+
+  <script>
+const terminal = document.getElementById('terminal');
+  const sound = document.getElementById('typeSound');
+  const lines = [
+    "Initializing HackTool v3.8...",
+    "Bypassing firewall...",
+    "Connecting to 127.0.0.1...",
+    "Accessing root permissions...",
+    "Downloading confidential files...",
+    "Extracting passwords.txt...",
+    "Decrypting AES-256...",
+    "Upload in progress...",
+    "Ping google.com [✓]",
+    "Injecting shell...",
+    "System compromised ✔",
+    "EXTRACTED FILE: passwords.txt",
+    "  - admin: root123",
+    "  - user: pass456",
+    "  - guest: 1234",
+    "EXITING TERMINAL..."
+  ];
+  let i = 0;
+  let charIndex = 0;
+  let currentLine = "";
+
+  function typeChar() {
+    if (i < lines.length) {
+      if (charIndex < lines[i].length) {
+        currentLine += lines[i][charIndex];
+        terminal.innerHTML = terminal.innerHTML.replace(/<span class="blink">_<\\/span>/, "") + lines[i][charIndex] + '<span class="blink">_</span>';
+        charIndex++;
+        sound.currentTime = 0;
+        sound.play();
+        setTimeout(typeChar, 30);
+      } else {
+        terminal.innerHTML = terminal.innerHTML.replace(/<span class="blink">_<\\/span>/, "") + "";
+        currentLine = "";
+        charIndex = 0;
+        i++;
+        setTimeout(typeChar, 400);
+      }
+      terminal.scrollTop = terminal.scrollHeight;
+    } else {
+      terminal.innerHTML += "\\n> Hack complete. Closing terminal...";
+    }
+  }
+
+  terminal.innerHTML = "> Starting terminal...\\n";
+  setTimeout(typeChar, 1000);
+  </script>
+</body>
+</html>

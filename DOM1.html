@@ -1,0 +1,22 @@
+<h1>Square Calculator</h1>
+<html lang="en">
+<head>
+    <script>
+        function calculateSquare ()
+        {
+            const input= document.getElementById("numberInput").value;
+            const result = input * input; 
+            document.getElementById("result").innerText = "Square: "+ result;
+
+        }
+    </script>
+</head>
+<body>
+    <h2>Square Calculator</h2>
+    <label for="numInput">Enter a number:</label>
+    <input type="number" id="numberInput"/>
+    <button onclick="calculateSquare()">Calculate</button>
+    <p id="result"></p>
+    
+</body>
+</html>

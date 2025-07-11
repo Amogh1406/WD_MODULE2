@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Methods Demo</title>
+    <style>
+        .demo { padding: 20px; margin: 10px; border: 1px solid #ddd; }
+        .highlight { background: yellow; }
+    </style>
+</head>
+<body>
+    <div id="header" class="demo">Header Div</div>
+    <div class="content demo">Content Div 1</div>
+    <div class="content demo">Content Div 2</div>
+    <button id="action-btn">Click Me</button>
+
+    <script>
+        
+        const header = document.getElementById('header');
+        header.textContent = "Updated Header";
+        
+        const contents = document.getElementsByClassName('content');
+        contents[0].classList.add('highlight');
+        
+        const button = document.querySelector('#action-btn');
+        button.style.backgroundColor = "lightblue";
+
+        const allDemos = document.querySelectorAll('.demo');
+        allDemos.forEach((el, i) => {
+            el.textContent += ` (Item ${i+1})`;
+        });
+    </script>
+</body>
+</html>
